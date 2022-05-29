@@ -94,14 +94,15 @@ This manual describes the delivery of an application using [docker][docker]. You
     
 
 ## Environment variables
-Name | Required | Default value | Description
---- | --- | --- | ---
-DEBUG              | :heavy_minus_sign: | `False`           | A boolean that turns on/off [debug mode][1] in django |
-SECRET_KEY         | :heavy_plus_sign:  | N/A               | [Secret key][2] for django-project |
-DATABASE_URL       | :heavy_plus_sign:  | N/A               | Link to connect to the database. Link to connect to the database. [This format][4] is used |
-DJANGO_STATIC_ROOT | :heavy_minus_sign: | <BASE_DIR>/static | Directory for storing [static files][4] |
-SENTRY_DSN         | :heavy_minus_sign: | `None`            | [Sentry DSN][5] |
-ALLOWED_HOSTS      | :heavy_plus_sign:  | `[]`              | Django [ALLOWED_HOSTS](https://docs.djangoproject.com/en/3.2/ref/settings/#allowed-hosts)
+| Name               | Required           | Default value     | Description                                                                                |
+|--------------------|--------------------|-------------------|--------------------------------------------------------------------------------------------|
+| DEBUG              | :heavy_minus_sign: | `False`           | A boolean that turns on/off [debug mode][1] in django                                      |
+| SECRET_KEY         | :heavy_plus_sign:  | N/A               | [Secret key][2] for django-project                                                         |
+| DATABASE_URL       | :heavy_plus_sign:  | N/A               | Link to connect to the database. Link to connect to the database. [This format][4] is used |
+| DJANGO_STATIC_ROOT | :heavy_minus_sign: | <BASE_DIR>/static | Directory for storing [static files][4]                                                    |
+| SENTRY_DSN         | :heavy_minus_sign: | `None`            | [Sentry DSN][5]                                                                            |
+| ALLOWED_HOSTS      | :heavy_plus_sign:  | `[]`              | Django [ALLOWED_HOSTS](https://docs.djangoproject.com/en/3.2/ref/settings/#allowed-hosts)  |
+
 [1]: https://docs.djangoproject.com/en/3.2/ref/settings/#debug
 [2]: https://docs.djangoproject.com/en/3.2/ref/settings/#secret-key
 [4]: https://django-environ.readthedocs.io/en/latest/#environ.environ.Env.db_url
