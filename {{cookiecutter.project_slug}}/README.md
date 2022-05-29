@@ -3,66 +3,27 @@
 {{ cookiecutter.project_description }}
 
 
-## INSTALLATION
-### Local development
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+[![Checked with mypy](https://camo.githubusercontent.com/59eab954a267c6e9ff1d80e8055de43a0ad771f5e1f3779aef99d111f20bee40/687474703a2f2f7777772e6d7970792d6c616e672e6f72672f7374617469632f6d7970795f62616467652e737667)](http://mypy-lang.org/)
+## 💻 DEVELOPMENT
 
-This tutorial describes the installation using [pyenv][pyenv], [pyenv-virtualenv][pyenv-virtualenv] and installing [poetry][poetry] in the local environment of the project. However, you can use any alternative way convenient for you: use [virtualenv][virtualenv], install [poetry][poetry] globally, or stop using [pyenv][pyenv] in favor of a global [python][python] interpreter. But it will not be described, do it at one's own risk.
-
- 1. Install [pyenv][pyenv]: [instruction](https://github.com/pyenv/pyenv#installation)
-
- 2. Install [python][python] 3.9.x with [pyenv][pyenv]. For example:
+### 🚀 Project running
+After cloning the project, you can run it with the following steps (required [docker][docker]):
+ 1. Create .env file:
     ```shell
-    pyenv install 3.9.6
+    cp .env.template .env
     ```
-    *_Here and in other the examples, [python][python] version [3.9.6](https://www.python.org/downloads/release/python-396/) will be used. You can use any minor version 3.9.x._
-
- 3. Install [pyenv-virtualenv][pyenv-virtualenv]: [Instruction](https://github.com/pyenv/pyenv-virtualenv#installation)
-
- 4. Create [virtualenv][pyenv-virtualenv]:
+ 2. Set values in .env file.
+ 3. Run development server:
     ```shell
-    pyenv virtualenv 3.9.6 {{ cookiecutter.project_slug }}
+    docker compose -f docker-compose.dev.yaml up
     ```
-    *_`{{ cookiecutter.project_slug }}` - [virtualenv][pyenv-virtualenv] name. You can change it with your custom name._
-
- 5. Set the local application-specific [virtualenv][pyenv-virtualenv]:
-     ```shell
-     pyenv local {{ cookiecutter.project_slug }}
-     ```
-
- 6. Install [poetry][poetry]: [Instruction](https://python-poetry.org/docs/#installation)
-
- 7. Install project dependencies:
+    or
     ```shell
-    poetry install
-    ```
- 8. Install [PostgreSQL][postgres] if not installed: [Instruction](https://www.postgresql.org/download/)
-
- 9. [Create a database](https://www.postgresql.org/docs/12/sql-createdatabase.html) in any convenient way
-
- 10. Copy [`.env.sample`](.env.sample) with file named `.env`:
-     ```shell
-     cp .env.sample .env
-     ```
- 11. Set values for variables (values should replace `<...>`).
-
- 12. Go to the folder with the source code of the project:
-     ```shell
-     cd src
-     ```
-
- 13. Apply [migrations](https://docs.djangoproject.com/en/3.2/topics/migrations/):
-     ```shell
-     ./manage.py migrate
-     ```
-
- 14. Run [development server](https://docs.djangoproject.com/en/3.2/intro/tutorial01/#the-development-server):
-    ```shell
-    ./manage.py runserver
+    docker-compose -f docker-compose.dev.yaml up
     ```
 
- 15. You are gorgeous! The app is running and most likely available at http://127.0.0.1:8000/
-
-### Deployment:
+### 📦 Deployment:
 This manual describes the delivery of an application using [docker][docker]. You can deliver the application using [docker-compose][docker-compose], even abandon [docker][docker] and put everything on the server or use other methods and tools, but this will not be described, and you will have to do this at one's own risk.
 
  1. Install and configure [docker][docker]: [instruction](https://docs.docker.com/engine/install/ubuntu/)
@@ -93,7 +54,7 @@ This manual describes the delivery of an application using [docker][docker]. You
     _`{{ cookiecutter.project_slug }}` - name of the [image](https://docs.docker.com/glossary/#image) [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t). Specified in step 2_
     
 
-## Environment variables
+## 🔖 Environment variables
 | Name               | Required           | Default value     | Description                                                                                |
 |--------------------|--------------------|-------------------|--------------------------------------------------------------------------------------------|
 | DEBUG              | :heavy_minus_sign: | `False`           | A boolean that turns on/off [debug mode][1] in django                                      |
