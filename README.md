@@ -1,17 +1,13 @@
-# django-drf-cookiecutter-template
+# Django DRF cookiecutter template
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![GitHub last commit](https://img.shields.io/github/last-commit/DNK-IT-Solutions/django-drf-cookiecutter-template/main)](https://github.com/DNK-IT-Solutions/django-drf-cookiecutter-template/commits/main)
-![last build](https://github.com/DNK-IT-Solutions/django-drf-cookiecutter-template/actions/workflows/test_create_project.yml/badge.svg)
+[![GitHub last commit](https://img.shields.io/github/last-commit/md5orsha256/django-drf-template/main)](https://github.com/DNK-IT-Solutions/django-drf-cookiecutter-template/commits/main)
+[![last build](https://github.com/md5orsha256/django-drf-template/actions/workflows/test_create_project.yml/badge.svg?branch=main)](https://github.com/md5orsha256/django-drf-template/actions/workflows/test_create_project.yml)
 
-
-[Django][django] + [DRF][drf] + [Poetry](https://python-poetry.org) template for [cookiecutter][cookiecutter]
+Another [Django][django] + [DRF][drf] + [Poetry](https://python-poetry.org) template for [cookiecutter][cookiecutter]
 
 
 ## Dependencies:
- * [Python 3.9](https://www.python.org/downloads/release/python-390/)
- * [python-pip](https://pypi.org/project/pip/)
- * [PostgreSQL][postgres]
-
+ * [Docker][docker]
 
  
 ## Installation
@@ -25,13 +21,13 @@
  3. Run [postgres][postgres] server and create database for project
  4. Create project from template:
     ```shell
-    cookiecutter gh:DNK-IT-Solutions/django-drf-cookiecutter-template
+    cookiecutter gh:md5orsha256/django-drf-template
     ```
     For interactive project creation
 
     OR
     ```shell
-    cookiecutter gh:DNK-IT-Solutions/django-drf-cookiecutter-template \
+    cookiecutter gh:md5orsha256/django-drf-template \
         --no-input \
         project_name=<project_name> \
         project_slug=<project_slug> \
@@ -42,7 +38,10 @@
         use_sentry=<use_sentry> \
         ENV_DEBUG=<ENV_DEBUG> \
         ENV_SECRET_KEY=<ENV_SECRET_KEY> \
-        ENV_DATABASE_URL=<ENV_DATABASE_URL> \
+        ENV_DB_NAME=<ENV_DB_NAME> \
+        ENV_DB_USER=<ENV_DB_USER> \
+        ENV_DB_PASSWORD=<ENV_DB_PASSWORD> \
+        ENV_DB_HOST=<ENV_DB_HOST> \
         ENV_DJANGO_STATIC_ROOT=<ENV_DJANGO_STATIC_ROOT> \
         ENV_SENTRY_DSN=<ENV_SENTRY_DSN> \
         ENV_DJANGO_ALLOWED_HOSTS=<ENV_DJANGO_ALLOWED_HOSTS>
@@ -56,22 +55,25 @@
 
 ## Template parameters ##
 
-| Parameter name           | Required              | Description |
-| ------------------------ |:---------------------:|:----------- |
-| project_name             | :heavy_plus_sign:     | The name of the project. Will be used in the [README.md](./{{cookiecutter.project_slug}}/README.md) file. It also creates a default value for the `project_slug` variable from this value. |
-| project_slug             | :heavy_minus_sign:    | Used for the name of the root directory of the Django project, `[tool.poetry].name` value in [pyproject.toml][2], also as the default database name in the `ENV_DATABASE_URL` variable |
-| project_description      | :heavy_minus_sign:    | Used in [README.md](./{{cookiecutter.project_slug}}/README.md), `[tool.poetry].description` value in [pyproject.toml][2] |
-| project_version          | :heavy_minus_sign:    | Used as `[tool.poetry].version` value in [pyproject.toml][2] |
-| django_settings_package  | :heavy_minus_sign:    | The name of the configuration django application (the application that stores the settings.py file) |
-| author_name              | :heavy_plus_sign:     | Used as part of `[tool.poetry].authors` value in [pyproject.toml][2] |
-| author_email             | :heavy_plus_sign:     | Used as part of `[tool.poetry].authors` value in [pyproject.toml][2], [drf-yasg][drf-yasg] contact email |
-| use_sentry               | :heavy_minus_sign:    | Determines whether [sentry][3] will be used in the project. If yes, [sentry-sdk][4] will be installed and configured |
-| ENV_DEBUG                | :heavy_minus_sign:    | Used to generate .env file. A boolean that turns on/off [debug mode][5] in django |
-| ENV_SECRET_KEY           | :heavy_minus_sign:    | Used to generate .env file. [Secret key][6] for django-project |
-| ENV_DATABASE_URL         | :heavy_minus_sign:    | Used to generate .env file. Link to connect to the database. Link to connect to the database. [This format][7] is used |
-| ENV_DJANGO_STATIC_ROOT   | :heavy_minus_sign:    | Used to generate .env file. Directory for storing [static files][8] |
-| ENV_SENTRY_DSN           | if use_sentry = "yes" | Used to generate .env file. [Sentry DSN][9] only if use_sentry = "yes" |
-| ENV_DJANGO_ALLOWED_HOSTS | :heavy_minus_sign:    | Used to generate .env file. Django [ALLOWED_HOSTS](https://docs.djangoproject.com/en/3.2/ref/settings/#allowed-hosts)
+| Parameter name           |       Required        | Description                                                                                                                                                                                |
+|--------------------------|:---------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| project_name             |   :heavy_plus_sign:   | The name of the project. Will be used in the [README.md](./{{cookiecutter.project_slug}}/README.md) file. It also creates a default value for the `project_slug` variable from this value. |
+| project_slug             |  :heavy_minus_sign:   | Used for the name of the root directory of the Django project, `[tool.poetry].name` value in [pyproject.toml][2], also as the default database name in the `ENV_DATABASE_URL` variable     |
+| project_description      |  :heavy_minus_sign:   | Used in [README.md](./{{cookiecutter.project_slug}}/README.md), `[tool.poetry].description` value in [pyproject.toml][2]                                                                   |
+| project_version          |  :heavy_minus_sign:   | Used as `[tool.poetry].version` value in [pyproject.toml][2]                                                                                                                               |
+| django_settings_package  |  :heavy_minus_sign:   | The name of the configuration django application (the application that stores the settings.py file)                                                                                        |
+| author_name              |   :heavy_plus_sign:   | Used as part of `[tool.poetry].authors` value in [pyproject.toml][2]                                                                                                                       |
+| author_email             |   :heavy_plus_sign:   | Used as part of `[tool.poetry].authors` value in [pyproject.toml][2], [drf-yasg][drf-yasg] contact email                                                                                   |
+| use_sentry               |  :heavy_minus_sign:   | Determines whether [sentry][3] will be used in the project. If yes, [sentry-sdk][4] will be installed and configured                                                                       |
+| ENV_DEBUG                |  :heavy_minus_sign:   | Used to generate .env file. A boolean that turns on/off [debug mode][5] in django                                                                                                          |
+| ENV_SECRET_KEY           |  :heavy_minus_sign:   | Used to generate .env file. [Secret key][6] for django-project                                                                                                                             |
+| ENV_DB_NAME              |  :heavy_minus_sign:   | Used to generate .env file.                                                                                                                                                                |
+| ENV_DB_USER              |   :heavy_plus_sign:   | Used to generate .env file.                                                                                                                                                                |
+| ENV_DB_PASSWORD          |   :heavy_plus_sign:   | Used to generate .env file.                                                                                                                                                                |
+| ENV_DB_HOST              |  :heavy_minus_sign:   | Used to generate .env file.                                                                                                                                                                |
+| ENV_DJANGO_STATIC_ROOT   |  :heavy_minus_sign:   | Used to generate .env file. Directory for storing [static files][8]                                                                                                                        |
+| ENV_SENTRY_DSN           | if use_sentry = "yes" | Used to generate .env file. [Sentry DSN][9] only if use_sentry = "yes"                                                                                                                     |
+| ENV_DJANGO_ALLOWED_HOSTS |  :heavy_minus_sign:   | Used to generate .env file. Django [ALLOWED_HOSTS](https://docs.djangoproject.com/en/3.2/ref/settings/#allowed-hosts)                                                                      |
 
 [1]: https://cookiecutter.readthedocs.io/en/latest/advanced/template_extensions.html#random-string-extension
 [2]: ./{{cookiecutter.project_slug}}/pyproject.toml
@@ -144,6 +146,7 @@ More information can be found in the [pyproject.toml](./\{\{cookiecutter.project
  - [ ] Make DB driver changeable
  - [ ] Update Makefile with docker-compose or docker
  - [ ] Create gh action in project (test running, linter and dependabot)
+ - [ ] Add running tests and linter checking on post_gen_project
 
 
 [drf-yasg]: https://drf-yasg.readthedocs.io/en/stable/
@@ -151,3 +154,4 @@ More information can be found in the [pyproject.toml](./\{\{cookiecutter.project
 [drf]: https://www.django-rest-framework.org
 [cookiecutter]: https://cookiecutter.readthedocs.io/
 [postgres]: https://www.postgresql.org
+[docker]: https://www.docker.com
