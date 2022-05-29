@@ -1,0 +1,3 @@
+"""
+Project components configuration
+"""
