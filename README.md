@@ -130,6 +130,18 @@ This template is intended for creating API applications, therefore it does not i
 More information can be found in the [pyproject.toml](./\{\{cookiecutter.project_slug\}\}/pyproject.toml) file
 
 
+## TODO
+ - [ ] Test coverage configuration
+ - [ ] Create factory for User
+ - [ ] Configure a12n
+ - [ ] Install and configure [loguru](https://github.com/Delgan/loguru)
+ - [ ] Install and configure [django-log-request-id](https://github.com/dabapps/django-log-request-id)
+ - [ ] Add healthcheck
+ - [ ] Add metrics
+ - [ ] Add profiler
+ - [ ] Make DB driver changeable
+
+
 [drf-yasg]: https://drf-yasg.readthedocs.io/en/stable/
 [django]: https://www.djangoproject.com
 [drf]: https://www.django-rest-framework.org
