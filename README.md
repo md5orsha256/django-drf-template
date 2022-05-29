@@ -132,6 +132,8 @@ More information can be found in the [pyproject.toml](./\{\{cookiecutter.project
 
 ## TODO
  - [ ] Test coverage configuration
+ - [ ] Add docker-compose file for tests running
+ - [ ] Add docker-compose file for production
  - [ ] Create factory for User
  - [ ] Configure a12n
  - [ ] Install and configure [loguru](https://github.com/Delgan/loguru)
@@ -140,6 +142,8 @@ More information can be found in the [pyproject.toml](./\{\{cookiecutter.project
  - [ ] Add metrics
  - [ ] Add profiler
  - [ ] Make DB driver changeable
+ - [ ] Update Makefile with docker-compose or docker
+ - [ ] Create gh action in project (test running, linter and dependabot)
 
 
 [drf-yasg]: https://drf-yasg.readthedocs.io/en/stable/
