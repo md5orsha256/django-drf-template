@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14.3-alpine
+    ports:
+      - "9753:5432"
+    env_file:
+      - .env
+    container_name: db
+    restart: on-failure
+    volumes:
+      - "./volumes/db:/var/lib/postgresql/data/pgdata"
+    networks:
+      - {{cookiecutter.project_slug}}_default
+
+  app:
+    build:
+      context: src/
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "8000:8000"
+    container_name: app
+    volumes:
+      - ./src:/app
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - {{cookiecutter.project_slug}}_default
+
+networks:
+  {{cookiecutter.project_slug}}_default:
+    name: {{cookiecutter.project_slug}}_default
