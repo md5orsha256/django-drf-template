@@ -95,12 +95,12 @@ This template is intended for creating API applications, therefore it does not i
  * [drf-yasg][drf-yasg] - for API documentation
  * [django-auditlog](https://github.com/jazzband/django-auditlog)
  * [django-environ-2](https://django-environ-2.readthedocs.io/en/stable/)
+ * [django-split-settings](https://github.com/wemake-services/django-split-settings)
 #### Development tools:
  * [flake8](https://flake8.pycqa.org/en/latest/) with plugins:
     - [flake8-absolute-import](https://github.com/bskinn/flake8-absolute-import)
     - [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear)
     - [flake8-cognitive-complexity](https://github.com/Melevir/flake8-cognitive-complexity)
-    - [flake8-commas](https://github.com/PyCQA/flake8-commas)
     - [flake8-django](https://github.com/rocioar/flake8-django)
     - [flake8-eradicate](https://github.com/wemake-services/flake8-eradicate)
     - [flake8-isort](https://github.com/gforcada/flake8-isort)
@@ -124,15 +124,18 @@ This template is intended for creating API applications, therefore it does not i
  * [bandit](https://github.com/PyCQA/bandit)
  * [black](https://black.readthedocs.io/en/stable/)
  * [isort](https://github.com/PyCQA/isort)
- * [django-nose](https://github.com/jazzband/django-nose)
  * [coverage](https://coverage.readthedocs.io/en/coverage-5.5/)
  * [factory-boy](https://factoryboy.readthedocs.io/en/stable/)
+ * [pytest-django](https://github.com/pytest-dev/pytest-django)
 
 
 More information can be found in the [pyproject.toml](./\{\{cookiecutter.project_slug\}\}/pyproject.toml) file
 
 
 ## TODO
+ - [ ] Fix static path template parameter
+ - [ ] add poetry.lock file
+ - [ ] Create docker-ignore file
  - [ ] Test coverage configuration
  - [ ] Add docker-compose file for tests running
  - [ ] Add docker-compose file for production

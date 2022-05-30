@@ -16,7 +16,6 @@ INSTALLED_APPS_BUILTIN = [
 INSTALLED_APPS_3RD_PARTY = [
     "rest_framework",
     "drf_yasg",
-    "django_nose",
     "auditlog",
 ]
 
